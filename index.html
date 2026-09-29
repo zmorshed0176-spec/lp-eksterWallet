@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ekster — 5 Reasons Why Over 1,000,000 People Switched And Threw Their Old Wallets Away</title>
+<meta name="description" content="Try it 100% risk-free for 100 days, or get your money back - guaranteed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   EKSTER wallet landing page — wireframe build
+   All photos / videos / logos / certification marks are Balsamiq-style
+   placeholders on purpose.
+
+   Problems in the reference screenshots that are FIXED here:
+     1.  Announce bar text clipped — "DAY" sliced off (broken on desktop too)
+     2.  Header CTA button dropped on mobile with nothing in its place
+     3.  "As Seen On" logos sliced at both edges, no scroll affordance
+     4.  "2. Prevents Credit Card Theft" heading overlapping its paragraph
+     5.  Finder Card feature list in a different order on mobile than desktop
+     6.  "Aluminum Cardholder" heading overlapping the price beneath it
+     7.  Bundle's struck-through price ($187) clipped at the card's right edge
+     8.  "2 Year Warranty" icon overlapping its own label
+     9.  Comparison table sitting on top of the heading's last line
+    10.  ~300px of dead space under the FAQ list
+    11.  "Your FREE Tool Card" badge text overflowing its circle (desktop too)
+   ========================================================================== */
+
+:root{
+  --green:#2A4834;
+  --green-dark:#1E3526;
+  --cream:#FEFBF6;
+  --dark:#181818;
+  --black:#000;
+  --gold:#FAAE1A;
+  --yellow:#FFD701;
+  --opt:#F1F2F2;
+  --ink:#141414;
+  --muted:#4A4A4A;
+  --line:#D9D5CC;
+  --line-dark:#3A3A3A;
+
+  --f-head:'Playfair Display',Georgia,'Times New Roman',serif;
+  --f-body:'Lora',Georgia,'Times New Roman',serif;
+
+  --wrap:1180px;
+  --gut:24px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink);
+  background:var(--cream);
+  overflow-x:hidden;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
+.section{padding-block:76px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+h1,h2,h3{margin:0;font-family:var(--f-head);font-weight:700;line-height:1.16;color:var(--ink);letter-spacing:-.005em}
+h1{font-size:clamp(1.95rem,1.3rem + 2.6vw,3.1rem)}
+h2{font-size:clamp(1.7rem,1.2rem + 2.1vw,2.6rem)}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
+
+/* nothing overflows its container, anywhere (fixes 4, 6, 7) */
+p,li,h1,h2,h3,dt,dd,summary,span{overflow-wrap:anywhere}
+
+.ic{width:24px;height:24px;flex:none}
+.ic-sm{width:18px;height:18px}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ---------------- buttons ---------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;text-align:center;
+  background:var(--green);color:var(--cream);border:0;border-radius:2px;
+  font-family:var(--f-head);font-weight:700;font-size:1rem;letter-spacing:.02em;
+  text-transform:uppercase;text-decoration:none;padding:17px 30px;min-height:56px;
+  transition:background .15s ease,transform .15s ease;
+}
+.btn:hover{background:var(--green-dark)}
+.btn:active{transform:translateY(1px)}
+.btn--block{display:flex;width:100%}
+.btn--light{background:var(--cream);color:var(--ink)}
+.btn--light:hover{background:#fff}
+.btn--sm{padding:13px 24px;min-height:46px;font-size:.88rem}
+
+/* ---------------- trust row ---------------- */
+.trust{
+  display:flex;flex-wrap:wrap;gap:12px 30px;align-items:center;
+  margin-top:20px;font-size:.95rem;
+}
+.trust span{display:inline-flex;align-items:center;gap:10px}   /* fix 8 */
+.trust .ic{color:var(--green)}
+.trust--dark .ic{color:var(--cream)}
+
+/* ---------------- rating ---------------- */
+.stars{display:inline-flex;gap:2px;color:var(--gold);flex:none}
+.stars .ic{width:19px;height:19px}
+.rating{display:flex;align-items:center;gap:11px;flex-wrap:wrap;font-size:.95rem}
+.rating a{text-decoration:underline;text-underline-offset:3px}
+
+/* ---------------- green check list ---------------- */
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.checks li{display:flex;align-items:flex-start;gap:12px;font-size:1rem;line-height:1.45}
+.checks .ic{width:21px;height:21px;margin-top:3px;color:var(--green)}
+.checks--dark .ic{color:#6E9A7C}
+
+/* ==========================================================================
+   WIREFRAME PLACEHOLDERS
+   ========================================================================== */
+.ph{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  background:#E9E5DC;border:2px solid #C6BFB1;border-radius:4px;
+  color:#807766;overflow:hidden;
+}
+.ph::before,.ph::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(to top right,transparent calc(50% - 1px),#C6BFB1 calc(50% - 1px),#C6BFB1 calc(50% + 1px),transparent calc(50% + 1px));
+}
+.ph::after{
+  background-image:linear-gradient(to bottom right,transparent calc(50% - 1px),#C6BFB1 calc(50% - 1px),#C6BFB1 calc(50% + 1px),transparent calc(50% + 1px));
+}
+.ph__in{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:#E9E5DC;padding:11px 15px;border-radius:3px;
+  font-family:var(--f-body);font-size:11px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;text-align:center;line-height:1.4;
+}
+.ph--tight .ph__in{padding:4px 6px;font-size:9px;letter-spacing:.04em;gap:3px}
+.ph--dark{background:#2C2C2C;border-color:#4E4E4E;color:#9A9A9A}
+.ph--dark::before{background-image:linear-gradient(to top right,transparent calc(50% - 1px),#4E4E4E calc(50% - 1px),#4E4E4E calc(50% + 1px),transparent calc(50% + 1px))}
+.ph--dark::after{background-image:linear-gradient(to bottom right,transparent calc(50% - 1px),#4E4E4E calc(50% - 1px),#4E4E4E calc(50% + 1px),transparent calc(50% + 1px))}
+.ph--dark .ph__in{background:#2C2C2C}
+
+.ph-logo{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 16px;border:2px dashed rgba(20,20,20,.45);border-radius:3px;
+  font-family:var(--f-head);font-weight:700;font-size:1.3rem;letter-spacing:.18em;
+  color:var(--ink);text-transform:uppercase;white-space:nowrap;
+}
+.ph-logo--light{border-color:rgba(254,251,246,.6);color:var(--cream)}
+.ph-logo--press{
+  font-family:var(--f-body);font-size:.88rem;font-weight:700;letter-spacing:.08em;
+  padding:6px 13px;border-width:2px;
+}
+.ph-cert{
+  flex:none;width:96px;height:62px;
+  border:2px dashed #C6BFB1;border-radius:3px;color:#9A9080;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  line-height:1.3;padding:6px;
+}
+.findmy{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid #D7D2C7;border-radius:10px;
+  padding:8px 16px 8px 10px;box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+.findmy i{
+  width:28px;height:28px;border-radius:50%;flex:none;
+  border:2px dashed #9A9080;display:block;
+}
+.findmy span{font-family:var(--f-body);font-size:.78rem;line-height:1.2;color:#333}
+.findmy b{display:block;font-size:.98rem;font-weight:600;color:#111}
+
+/* offer badge — sized to its text (fix 11) */
+.badge-round{
+  position:absolute;z-index:3;
+  min-width:96px;min-height:96px;padding:14px;border-radius:999px;
+  background:var(--green);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--f-head);font-weight:700;font-size:.84rem;line-height:1.25;
+}
+
+/* ==========================================================================
+   ANNOUNCE + HEADER
+   ========================================================================== */
+.announce{
+  background:var(--green);color:var(--cream);text-align:center;
+  font-family:var(--f-head);font-weight:700;font-size:.8rem;letter-spacing:.03em;
+  text-transform:uppercase;padding:9px var(--gut);line-height:1.45;   /* fix 1 */
+}
+.site-header{background:var(--cream)}
+.site-header .wrap{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  min-height:76px;padding-block:12px;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero{background:var(--cream);padding-block:44px 64px}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.hero h1{margin:18px 0 22px}
+.hero__lede{font-size:1.06rem;max-width:34ch;margin-bottom:28px}
+.hero__media{position:relative}
+.hero__media .ph{aspect-ratio:1/1.02;border-radius:3px}
+.hero__chip{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2}
+
+/* ==========================================================================
+   AS SEEN ON
+   ========================================================================== */
+.seen{background:var(--green);color:var(--cream);padding-block:24px 30px}
+.seen__label{
+  text-align:center;font-family:var(--f-head);font-weight:700;
+  font-size:1.05rem;margin-bottom:16px;
+}
+.seen__logos{display:flex;align-items:center;justify-content:space-between;gap:26px}
+.seen__logos .ph-logo{flex:none}
+
+/* ==========================================================================
+   CREATORS
+   ========================================================================== */
+.creators{background:var(--cream);text-align:center;border-bottom:1px solid var(--line)}
+.creators h2{max-width:20ch;margin-inline:auto;margin-bottom:44px}
+.reel{position:relative}
+.reel .ph{aspect-ratio:9/16;border-radius:3px}
+.reel__meta{
+  position:absolute;inset:9px 9px auto 9px;z-index:2;
+  display:flex;align-items:center;gap:9px;text-align:left;
+}
+.reel__av{
+  flex:none;width:30px;height:30px;border-radius:50%;
+  background:#C0785F;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-body);font-size:.6rem;font-weight:700;
+}
+.reel__handle{font-size:.72rem;line-height:1.3;color:#6F6558;min-width:0}
+.reel__handle b{display:block;font-size:.84rem;color:#3A342B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ==========================================================================
+   REASON BLOCKS
+   ========================================================================== */
+.reason{background:var(--cream)}
+.reason--dark{background:var(--dark);color:var(--cream)}
+.reason--dark h2{color:var(--cream)}
+.reason--line{border-bottom:1px solid var(--line)}
+.reason__grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.reason__media .ph{aspect-ratio:1/1;border-radius:3px}
+.reason__copy h2{margin-bottom:22px}      /* fix 4 */
+.reason__copy p{max-width:44ch}
+.reason__copy .btn{margin-top:30px}
+.reason__copy .checks{margin:24px 0}
+.reason--rev .reason__media{order:2}
+
+.price{display:flex;align-items:baseline;gap:12px;font-family:var(--f-head);margin:22px 0 0}
+.price b{font-size:1.5rem;font-weight:700}
+.price s{font-size:1.25rem;color:#9A9A9A;font-weight:600}
+.reason--dark .price s{color:#8A8A8A}
+
+/* the Find My stack in reason 3 */
+.findmy-stack{display:flex;flex-direction:column;align-items:center;gap:18px}
+.findmy-stack .ph{aspect-ratio:3/3.4;width:100%;border-radius:3px}
+
+/* ==========================================================================
+   PRODUCTS
+   ========================================================================== */
+.products{background:var(--cream)}
+.products h2{text-align:center;max-width:22ch;margin:0 auto 52px}
+.pblock{
+  display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;
+  padding-block:52px;border-top:1px solid var(--line);
+}
+.pblock:first-of-type{border-top:0;padding-top:0}
+.pblock--rev .pblock__media{order:2}
+
+.pgal{position:relative}
+.pgal__main{aspect-ratio:1/1.04;border-radius:3px}
+.pgal .badge-round{top:-10px;left:50%;transform:translateX(-50%);min-width:88px;min-height:88px;font-size:.8rem}
+.pblock--rev .pgal .badge-round{left:auto;right:8px;transform:none}
+.pgal__thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-top:14px;max-width:420px;margin-inline:auto}
+.pgal__thumbs .ph{aspect-ratio:1;border-radius:2px}
+.pgal__thumbs .ph.is-on{border-color:var(--ink)}
+
+.pblock h3.pname{font-size:clamp(1.7rem,1.3rem + 1.6vw,2.3rem);margin:10px 0 12px}  /* fix 6 */
+.pblock .price{margin:0 0 22px}
+.pblock .price b{font-size:1.7rem}
+
+.colour{margin:24px 0}
+.colour__label{font-size:.95rem;margin-bottom:11px}
+.colour__label b{font-weight:600}
+.swatches{display:flex;gap:14px}
+.sw{width:26px;height:26px;border-radius:50%;border:1px solid rgba(20,20,20,.2);padding:0;flex:none}
+.sw.is-on{box-shadow:0 0 0 2px var(--cream),0 0 0 4px var(--ink)}
+
+.opt{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  background:transparent;border:1px solid var(--line);border-radius:2px;
+  padding:16px 18px;margin-bottom:12px;
+}
+.opt.is-on{background:var(--opt);border-color:#9FB6A6}
+.opt__radio{
+  flex:none;width:20px;height:20px;border-radius:50%;
+  border:1.5px solid #8C8C8C;display:flex;align-items:center;justify-content:center;
+}
+.opt.is-on .opt__radio{border-color:var(--green)}
+.opt.is-on .opt__radio::after{content:"";width:11px;height:11px;border-radius:50%;background:var(--green)}
+.opt__body{flex:1;min-width:0}
+.opt__name{font-size:1.02rem}
+.opt__price{flex:none;display:flex;align-items:baseline;gap:8px;font-family:var(--f-head);font-weight:700}
+.opt__price s{color:#9A9A9A;font-size:.86em;font-weight:600}
+.opt__tag{
+  display:inline-block;background:var(--yellow);color:var(--ink);
+  font-family:var(--f-body);font-size:.72rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:4px 11px;margin-left:12px;vertical-align:2px;
+}
+.opt__name{display:block}
+.opt__inside{display:block;margin-top:9px;font-size:.88rem;color:var(--muted)}
+.opt__inside ol{margin:6px 0 0;padding-left:18px;display:grid;gap:3px}
+
+.buynow{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  width:100%;background:var(--green);color:var(--cream);
+  border:0;border-radius:2px;padding:18px 22px;min-height:58px;
+  font-family:var(--f-body);font-size:1.05rem;text-decoration:none;
+}
+.buynow:hover{background:var(--green-dark)}
+.buynow s{color:rgba(254,251,246,.65);font-size:.94em}
+.buynow__l{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+
+.specs{margin-top:30px}
+.specs__title{
+  font-family:var(--f-head);font-size:1.12rem;letter-spacing:.08em;
+  text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid var(--ink);
+  display:inline-block;margin-bottom:6px;
+}
+.specs dl{margin:0;display:grid}
+.specs .row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  padding:13px 0;border-bottom:1px solid var(--line);font-size:.95rem;
+}
+.specs dt{flex:none}
+.specs dd{margin:0;text-align:right;color:var(--muted)}
+.certs{display:flex;align-items:center;gap:20px;margin-top:26px}
+
+/* ==========================================================================
+   REVIEWS
+   ========================================================================== */
+.reviews{background:var(--dark);color:var(--cream);text-align:center}
+.reviews h2{color:var(--cream);max-width:20ch;margin:0 auto 46px}
+.rcard{
+  background:#fff;color:var(--ink);padding:26px 24px;
+  display:flex;flex-direction:column;height:100%;text-align:center;
+}
+.rcard h3{font-family:var(--f-body);font-size:1rem;font-weight:700;margin:14px 0 14px}
+.rcard p{font-size:.95rem;flex:1 0 auto}
+.rcard__by{margin-top:26px}
+.rcard__by b{display:block;font-weight:700;font-size:.98rem;margin-bottom:6px}
+.rcard__by span{display:inline-flex;align-items:center;gap:8px;font-size:.93rem}
+.rcard__by .ic{color:var(--green)}
+.reviews .car__btn{border-color:rgba(254,251,246,.75);color:var(--cream)}
+.reviews .car__dot{border-color:rgba(254,251,246,.75)}
+.reviews .car__dot.is-on{background:var(--cream)}
+
+/* ==========================================================================
+   COMPARISON (fix 9)
+   ========================================================================== */
+.compare{background:var(--cream);text-align:center}
+.compare h2{max-width:20ch;margin:0 auto 56px}
+.ctable{
+  max-width:720px;margin-inline:auto;
+  display:grid;grid-template-columns:minmax(0,1.15fr) 170px 170px;
+  text-align:left;
+}
+.ccell{
+  display:flex;align-items:center;justify-content:center;
+  padding:20px 14px;min-height:78px;border-bottom:1px solid var(--line);
+}
+.ccell--feat{justify-content:flex-start;font-size:.95rem;line-height:1.35}
+.ccell--head{min-height:110px;border-bottom:1px solid var(--line)}
+.ccell--head.ccell--feat{border-bottom:0}
+.ccol-us{background:#F4F6F7;border:1px solid #C9D3CC;border-bottom:0}
+.ccol-us.ccell--last{border-bottom:1px solid #C9D3CC}
+.ccell--them-head{font-family:var(--f-body);font-size:1.15rem;text-align:center;line-height:1.3}
+.ccell--last{border-bottom:0}
+.ctable .ic{width:34px;height:34px;color:var(--green)}
+.compare .btn{margin-top:46px}
+
+/* ==========================================================================
+   FAQ (fix 10)
+   ========================================================================== */
+.faq{background:var(--dark);color:var(--cream)}
+.faq h2{color:var(--cream);text-align:center;margin-bottom:38px}
+.faq__list{max-width:860px;margin-inline:auto;border-top:1px solid var(--line-dark)}
+.faq details{border-bottom:1px solid var(--line-dark)}
+.faq summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:20px;
+  padding:19px 0;font-family:var(--f-head);font-weight:700;font-size:1.05rem;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq .chev{flex:none;margin-top:4px;transition:transform .2s ease}
+.faq details[open] .chev{transform:rotate(180deg)}
+.faq__body{padding:0 0 22px;font-size:.97rem;color:#CFCFCF;max-width:72ch}
+
+/* ==========================================================================
+   FINAL CTA + FOOTER
+   ========================================================================== */
+.final{background:var(--cream)}
+.final__grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.final h2{margin-bottom:18px}
+.final__sub{max-width:24ch;margin-bottom:28px}
+.final__media .ph{aspect-ratio:4/3;border-radius:3px}
+
+.site-footer{background:var(--black);color:var(--cream);text-align:center;padding:46px var(--gut)}
+.site-footer p{font-size:.98rem;margin:20px 0 0}
+/* NOTE: must out-specify `.site-footer p` above, or its `margin:20px 0 0`
+   kills the `auto` side margins and the block sits left instead of centred. */
+.site-footer p.site-footer__legal{
+  max-width:940px;margin:22px auto 0;font-size:.68rem;line-height:1.6;
+  font-style:italic;color:#C9C9C9;
+}
+
+/* ==========================================================================
+   CAROUSEL
+   ========================================================================== */
+.car{position:relative}
+.car__view{overflow:hidden;margin-inline:-11px;transition:height .3s ease}
+.car__track{display:flex;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.car__slide{flex:0 0 var(--slide,20%);padding-inline:11px;min-width:0}
+.car__nav{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:32px}
+.car__btn{
+  width:42px;height:42px;border-radius:50%;flex:none;
+  background:transparent;border:1.5px solid var(--ink);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+}
+.car__btn[disabled]{opacity:.3;cursor:default}
+.car__dots{display:flex;align-items:center;gap:10px}
+.car__dot{
+  width:9px;height:9px;padding:0;border-radius:50%;
+  background:transparent;border:1.5px solid var(--ink);
+}
+.car__dot.is-on{background:var(--ink)}
+.car__nav.is-hidden{display:none}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width:1024px){
+  .section{padding-block:60px}
+  .hero__grid,.reason__grid,.pblock,.final__grid{gap:36px}
+  .ctable{grid-template-columns:minmax(0,1.1fr) 130px 130px}
+  .seen__logos{gap:18px}
+}
+
+@media (max-width:880px){
+  body{font-size:16px}
+  .section{padding-block:50px}
+
+  /* header keeps its CTA (fix 2) */
+  .site-header .wrap{gap:10px;min-height:64px}
+  .site-header .btn{padding:11px 14px;min-height:42px;font-size:.72rem}
+  .ph-logo{font-size:1.05rem;letter-spacing:.14em;padding:6px 12px}
+
+  /* hero: centred stack, image after the CTA */
+  .hero{padding-block:30px 40px}
+  .hero__grid{grid-template-columns:1fr;gap:28px;text-align:center}
+  .hero__lede{max-width:none;margin-inline:auto}
+  .hero .rating{justify-content:center}
+  .hero .btn{width:100%}
+  .hero .trust{justify-content:center;gap:10px 22px}
+  .hero__media .ph{aspect-ratio:4/3.4}
+
+  /* press logos scroll instead of being sliced (fix 3) */
+  .seen__logos{
+    justify-content:flex-start;gap:26px;
+    overflow-x:auto;padding-bottom:10px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  }
+  .seen__logos .ph-logo{scroll-snap-align:center}
+
+  /* reason blocks: copy first, then the picture */
+  .reason__grid{grid-template-columns:1fr;gap:26px}
+  .reason__copy{order:1}
+  .reason__media{order:2}
+  .reason--rev .reason__media{order:2}
+  .reason__copy p{max-width:none}
+  .reason__media .ph{aspect-ratio:4/3.2}
+  .findmy-stack{max-width:330px;margin-inline:auto}
+  .reason__copy .btn{width:100%}
+
+  /* products: picture first, then everything else */
+  .pblock{grid-template-columns:1fr;gap:26px;padding-block:40px}
+  .pblock__media,.pblock--rev .pblock__media{order:-1}
+  .pgal .badge-round,.pblock--rev .pgal .badge-round{
+    left:8px;right:auto;transform:none;min-width:78px;min-height:78px;font-size:.72rem;padding:10px;
+  }
+  .pgal__thumbs{gap:7px}
+  .opt{padding:14px 13px;gap:11px}
+  .opt__name{font-size:.95rem}
+  .opt__tag{margin-left:0;margin-top:8px;display:inline-block;vertical-align:0}
+  .opt__price{font-size:.95rem}
+  .buynow{padding:16px 16px;font-size:.98rem}
+
+  /* specs stack label above value */
+  .specs .row{flex-direction:column;align-items:flex-start;gap:3px;padding:12px 0}
+  .specs dd{text-align:left}
+  .certs{gap:14px;justify-content:space-between}
+  .ph-cert{width:88px;height:56px}
+
+  /* comparison: heading clears the table (fix 9) */
+  .compare h2{margin-bottom:36px}
+  .ctable{grid-template-columns:minmax(0,1.05fr) 88px 88px}
+  .ccell{padding:14px 8px;min-height:72px}
+  .ccell--feat{font-size:.84rem}
+  .ccell--head{min-height:86px}
+  .ccell--them-head{font-size:.92rem}
+  .ctable .ic{width:28px;height:28px}
+  /* the logo chip must fit its column, not spill into the next one */
+  .ccell--head.ccol-us{padding:8px 4px}
+  .ph-logo--cmp{font-size:.62rem;letter-spacing:.04em;padding:4px 5px;border-width:1px;gap:4px}
+  .ph-logo--cmp .ic{width:12px;height:12px}
+
+  /* carousels follow the slide on screen, no dead space (fix 10 sibling) */
+  .car__track{align-items:flex-start}
+
+  .final__grid{grid-template-columns:1fr;gap:26px}
+  .final__copy{order:2;text-align:center}
+  .final__media{order:1}
+  .final__sub{max-width:none;margin-inline:auto}
+  .final .btn{width:100%}
+  .final .trust{justify-content:center;gap:10px 22px}
+  .final__media .ph{aspect-ratio:4/3.2}
+
+  .car__nav{margin-top:26px}
+}
+
+@media (max-width:560px){
+  :root{--gut:18px}
+  .section{padding-block:42px}
+  .btn{padding:16px 16px;font-size:.88rem}
+  .trust{font-size:.88rem;gap:9px 16px}
+  .pgal__thumbs{gap:5px}
+  .ctable{grid-template-columns:minmax(0,1fr) 66px 66px}
+  .ccell{padding:12px 5px;min-height:66px}
+  .ccell--feat{font-size:.76rem}
+  .ctable .ic{width:24px;height:24px}
+  .ph-logo--cmp{font-size:.56rem;padding:4px 3px}
+  .ph-logo--cmp .ic{display:none}
+  .specs .row{font-size:.9rem}
+  .certs{gap:8px}
+  .ph-cert{width:74px;height:50px;font-size:7px}
+  .car__view{margin-inline:-7px}
+  .car__slide{padding-inline:7px}
+  .car__nav{gap:14px}
+  .site-footer__legal{font-size:.62rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21.1 7 14.2 2 9.3l6.9-1L12 2Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="currentColor"/><path fill="none" stroke="#FEFBF6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m7 12.3 3.3 3.3L17 8.8"/></symbol>
+  <symbol id="i-check-o" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10.4"/><path d="m7.2 12.4 3.4 3.4 6.2-7"/></g></symbol>
+  <symbol id="i-cross-o" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10.4"/><path d="m8.4 8.4 7.2 7.2M15.6 8.4l-7.2 7.2"/></g></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="m5 9 7 7 7-7"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M14.5 5 8 12l6.5 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9.5 5 16 12l-6.5 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M4 12h16m0 0-6-6m6 6-6 6"/></symbol>
+  <symbol id="i-warranty" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="9.4" r="6.4"/><path d="m8.4 14.6-1.3 6.2 4.9-2.5 4.9 2.5-1.3-6.2"/><path d="m9.6 9.4 1.7 1.7 3.2-3.4"/></g></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M1.6 6.4h11v9h-11z"/><path d="M12.6 10h4l3 3v2.4h-7z"/><circle cx="6" cy="17.6" r="2"/><circle cx="16.6" cy="17.6" r="2"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.8 3.8 5v6.4c0 5 3.5 9.6 8.2 10.8 4.7-1.2 8.2-5.8 8.2-10.8V5Z"/><path fill="none" stroke="#FEFBF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m8.2 11.8 2.6 2.6 5-5.2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9.2"/><path fill="currentColor" stroke="none" d="M10 8.3v7.4L16 12l-6-3.7Z"/></g></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4.5" width="18" height="15" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m3.5 17 5-5 3.5 3.5L15.5 12l5 5"/></g></symbol>
+  <symbol id="i-crest" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.2 4.6 5v7.4c0 4.7 3.1 8.2 7.4 9.4 4.3-1.2 7.4-4.7 7.4-9.4V5Z"/><path d="M9.6 9.2h4.8M12 9.2v5.6M9.6 14.8h4.8"/></g></symbol>
+</defs></svg>
+
+<!-- ============================ ANNOUNCE ============================ -->
+<div class="announce">Get up to 40% off + Free shipping within 1 business day</div>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="wrap">
+    <span class="ph-logo"><svg class="ic ic-sm"><use href="#i-crest"/></svg>Ekster</span>
+    <a class="btn btn--sm" href="#wallets">Get up to 40% off today</a>
+  </div>
+</header>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <div class="rating">
+        <span class="stars" aria-hidden="true">
+          <svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg>
+        </span>
+        <a href="#reviews">4.5/5.0 | 40,000+ Reviews</a>
+      </div>
+
+      <h1>5 reasons why over 1,000,000 people switched to Ekster and threw their old wallets away</h1>
+      <p class="hero__lede">Try it 100% risk-free for 100 days, or get your money back - guaranteed.</p>
+
+      <a class="btn" href="#wallets">Get my Ekster + 40% off now</a>
+
+      <div class="trust">
+        <span><svg class="ic"><use href="#i-warranty"/></svg>2 Year Warranty</span>
+        <span><svg class="ic"><use href="#i-truck"/></svg>Free Shipping + 100 Day Returns</span>
+        <span><svg class="ic"><use href="#i-truck"/></svg>Shipped within 1 Business Day</span>
+      </div>
+    </div>
+
+    <div class="hero__media">
+      <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — wallet &amp; Find My</span></div>
+      <span class="findmy hero__chip"><i></i><span>Works with<b>Apple Find My</b></span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ AS SEEN ON ============================ -->
+<section class="seen">
+  <div class="wrap">
+    <p class="seen__label">As Seen On</p>
+    <div class="seen__logos">
+      <span class="ph-logo ph-logo--light ph-logo--press">CBS</span>
+      <span class="ph-logo ph-logo--light ph-logo--press">Wired</span>
+      <span class="ph-logo ph-logo--light ph-logo--press">Hypebeast</span>
+      <span class="ph-logo ph-logo--light ph-logo--press">Business Insider</span>
+      <span class="ph-logo ph-logo--light ph-logo--press">Mashable</span>
+      <span class="ph-logo ph-logo--light ph-logo--press">Forbes</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CREATORS ============================ -->
+<section class="section creators">
+  <div class="wrap">
+    <h2>Ekster Wallets Are Trusted By Your Favourite Creators</h2>
+
+    <div class="car" data-carousel data-per-view="5">
+      <div class="car__view"><div class="car__track">
+
+        <div class="car__slide"><div class="reel">
+          <div class="reel__meta"><span class="reel__av">ek</span><span class="reel__handle"><b>The greatest wallet</b>Ekster®</span></div>
+          <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-play"/></svg>Video 9:16</span></div>
+        </div></div>
+
+        <div class="car__slide"><div class="reel">
+          <div class="reel__meta"><span class="reel__av">ek</span><span class="reel__handle"><b>The wallet of the future</b>Ekster®</span></div>
+          <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-play"/></svg>Video 9:16</span></div>
+        </div></div>
+
+        <div class="car__slide"><div class="reel">
+          <div class="reel__meta"><span class="reel__av">ek</span><span class="reel__handle"><b>Things you CAN'T lose</b>Ekster®</span></div>
+          <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-play"/></svg>Video 9:16</span></div>
+        </div></div>
+
+        <div class="car__slide"><div class="reel">
+          <div class="reel__meta"><span class="reel__av">ek</span><span class="reel__handle"><b>Happy New Year</b>Ekster®</span></div>
+          <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-play"/></svg>Video 9:16</span></div>
+        </div></div>
+
+        <div class="car__slide"><div class="reel">
+          <div class="reel__meta"><span class="reel__av">ek</span><span class="reel__handle"><b>Your Wallet Sucks</b>Ekster®</span></div>
+          <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-play"/></svg>Video 9:16</span></div>
+        </div></div>
+
+      </div></div>
+      <div class="car__nav">
+        <button class="car__btn" type="button" data-prev aria-label="Previous"><svg class="ic ic-sm"><use href="#i-left"/></svg></button>
+        <div class="car__dots"></div>
+        <button class="car__btn" type="button" data-next aria-label="Next"><svg class="ic ic-sm"><use href="#i-right"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REASON 1 ============================ -->
+<section class="section reason">
+  <div class="wrap reason__grid">
+    <div class="reason__media">
+      <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — slim vs bulky</span></div>
+    </div>
+    <div class="reason__copy">
+      <h2>1. Ekster Wallets are Slimmest in the Game</h2>
+      <p>Big, old wallets make your pockets bulge, which looks bad, especially with skinny pants. The Ekster wallet is thin and fits in your pocket easily without making it bulky.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REASON 2 ============================ -->
+<section class="section reason reason--dark reason--rev">
+  <div class="wrap reason__grid">
+    <div class="reason__media">
+      <div class="ph ph--dark"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — RFID in car</span></div>
+    </div>
+    <div class="reason__copy">
+      <h2>2. Prevents Credit Card Theft</h2>
+      <p>You don't want someone to skim your credit card as they walk by. Ekster wallets have built-in RFID protection to keep your credit cards safe all the time.</p>
+      <a class="btn btn--light" href="#wallets">Protect my credit card now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REASON 3 ============================ -->
+<section class="section reason">
+  <div class="wrap reason__grid">
+    <div class="reason__media">
+      <div class="findmy-stack">
+        <span class="findmy"><i></i><span>Works with<b>Apple Find My</b></span></span>
+        <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — Finder Card &amp; map</span></div>
+      </div>
+    </div>
+    <div class="reason__copy">
+      <h2>3. The New Ekster Finder Card Makes Your Belongings Impossible to Lose.</h2>
+      <ul class="checks">
+        <li><svg class="ic"><use href="#i-check"/></svg>Works with the Apple® Find My Network</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Slimmer than the AirTag at just 2.4 mm thin</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Rechargeable battery that lasts 6 months with a single charge</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Share your device location with upto 5 friends</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Voice activated with advanced encryption</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>Water - resistant</li>
+        <li><svg class="ic"><use href="#i-check"/></svg>95 dB Loud ringer</li>
+      </ul>
+      <p class="price"><b>$29</b> <s>$49</s></p>
+      <a class="btn btn--block" href="#wallets" style="margin-top:22px">Upgrade my wallet today</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REASON 4 ============================ -->
+<section class="section reason reason--dark reason--rev">
+  <div class="wrap reason__grid">
+    <div class="reason__media">
+      <div class="ph ph--dark"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — cards popping out</span></div>
+    </div>
+    <div class="reason__copy">
+      <h2>4. Makes Your Everyday Carry a Breeze</h2>
+      <p>Pulling cards out of your wallet can be awkward, right? Get your cards out with just a press of a button at the bottom. Press it, and bam! Your cards pop out like magic.</p>
+      <a class="btn btn--light" href="#wallets">Click here for quick access <svg class="ic ic-sm"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REASON 5 ============================ -->
+<section class="section reason reason--line">
+  <div class="wrap reason__grid">
+    <div class="reason__media" style="position:relative">
+      <span class="badge-round" style="top:-14px;right:-14px">Your FREE<br>Tool Card</span>
+      <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — Tool Card opener</span></div>
+    </div>
+    <div class="reason__copy">
+      <h2>5. Bundle - Up To Get a Free Tool Card</h2>
+      <p>When you buy the Ekster bundle pack, you get a Tool Card, absolutely free, It's 7 functions include a bottle opener to pop open a beer anytime, anywhere. Don't forget to bundle up ;)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRODUCTS ============================ -->
+<section class="section products" id="wallets">
+  <div class="wrap">
+    <h2>Choose Your Favourite Ekster Wallets From Our Best Sellers</h2>
+
+    <!-- ---------- Aluminum Cardholder ---------- -->
+    <article class="pblock">
+      <div class="pblock__media">
+        <div class="pgal">
+          <span class="badge-round">30% OFF<br>TODAY</span>
+          <div class="ph pgal__main"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — Aluminum Cardholder</span></div>
+          <div class="pgal__thumbs">
+            <div class="ph ph--tight is-on"><span class="ph__in">1</span></div>
+            <div class="ph ph--tight"><span class="ph__in">2</span></div>
+            <div class="ph ph--tight"><span class="ph__in">3</span></div>
+            <div class="ph ph--tight"><span class="ph__in">4</span></div>
+            <div class="ph ph--tight"><span class="ph__in">5</span></div>
+            <div class="ph ph--tight"><span class="ph__in">6</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pblock__copy">
+        <div class="rating">
+          <span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+          <span>8,300+ Reviews</span>
+        </div>
+        <h3 class="pname">Aluminum Cardholder</h3>
+        <p class="price"><b>$62</b> <s>$89</s></p>
+
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-check"/></svg>Holds 1-12 cards and bills</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Made from Space-grade 6061-T6 aluminium</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Quick card access at the click of a button</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Blocks RFID to prevent Money Theft</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Expandable Aluminium Backplate</li>
+        </ul>
+
+        <div class="colour">
+          <p class="colour__label">Choose Your Colour: &nbsp;<b>Classic Black</b></p>
+          <div class="swatches">
+            <button class="sw is-on" type="button" style="background:#111" aria-label="Classic Black"></button>
+            <button class="sw" type="button" style="background:#8A4141" aria-label="Maroon"></button>
+            <button class="sw" type="button" style="background:#4E5545" aria-label="Olive"></button>
+            <button class="sw" type="button" style="background:#A8A8A8" aria-label="Silver"></button>
+            <button class="sw" type="button" style="background:#9FB6C9" aria-label="Sky"></button>
+          </div>
+        </div>
+
+        <button class="opt is-on" type="button">
+          <span class="opt__radio"></span>
+          <span class="opt__body"><span class="opt__name">Aluminium Cardholder</span></span>
+          <span class="opt__price">$62 <s>$89</s></span>
+        </button>
+
+        <button class="opt" type="button">
+          <span class="opt__radio"></span>
+          <span class="opt__body">
+            <span class="opt__name">Trackable Cardholder Bundle <span class="opt__tag">Most Popular</span></span>
+            <span class="opt__inside">What's inside:
+              <ol><li>Aluminum Cardholder</li><li>Finder Card - Apple Find My</li><li>Tool Card (Free)</li></ol>
+            </span>
+          </span>
+          <span class="opt__price">$91 <s>$187</s></span>
+        </button>
+
+        <a class="buynow" href="#">
+          <span class="buynow__l">Buy Now - &nbsp;$62 <s>$89</s></span>
+          <svg class="ic"><use href="#i-arrow"/></svg>
+        </a>
+
+        <div class="trust">
+          <span><svg class="ic"><use href="#i-warranty"/></svg>2 Year Warranty</span>
+          <span><svg class="ic"><use href="#i-truck"/></svg>Free Shipping + 100 Day Returns</span>
+        </div>
+
+        <div class="specs">
+          <p class="specs__title">Specifications</p>
+          <dl>
+            <div class="row"><dt>Dimensions</dt><dd>0.29 x 4.1 x 2.3 in (0.75 x 10.5 x 6 cm)</dd></div>
+            <div class="row"><dt>Strap</dt><dd>Expandable back-plate, cash or card storage</dd></div>
+            <div class="row"><dt>Coins</dt><dd>Keep them in your piggy bank ;)</dd></div>
+            <div class="row"><dt>Patented</dt><dd>Patented card mechanism for easy access</dd></div>
+            <div class="row"><dt>Storage</dt><dd>1-6 cards in the cardholder, 6-8 in the backplate</dd></div>
+            <div class="row"><dt>Materials</dt><dd>Space-grade 6061-T6 aluminum</dd></div>
+          </dl>
+          <div class="certs">
+            <span class="ph-cert">Global Recycled Standard</span>
+            <span class="ph-cert">Certified B Corporation</span>
+            <span class="ph-cert">Leather Working Group</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Carbon Fiber Cardholder ---------- -->
+    <article class="pblock pblock--rev">
+      <div class="pblock__media">
+        <div class="pgal">
+          <span class="badge-round">30% OFF<br>TODAY</span>
+          <div class="ph pgal__main"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — Carbon Fiber Cardholder</span></div>
+          <div class="pgal__thumbs">
+            <div class="ph ph--tight is-on"><span class="ph__in">1</span></div>
+            <div class="ph ph--tight"><span class="ph__in">2</span></div>
+            <div class="ph ph--tight"><span class="ph__in">3</span></div>
+            <div class="ph ph--tight"><span class="ph__in">4</span></div>
+            <div class="ph ph--tight"><span class="ph__in">5</span></div>
+            <div class="ph ph--tight"><span class="ph__in">6</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pblock__copy">
+        <div class="rating">
+          <span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+          <span>1,190+ Reviews</span>
+        </div>
+        <h3 class="pname">Carbon Fiber Cardholder</h3>
+        <p class="price"><b>$88</b> <s>$125</s></p>
+
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-check"/></svg>Holds 1-12 cards and bills</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Made from 3K space grade carbon fiber</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Quick card access at the click of a button</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Blocks RFID to prevent Money Theft</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Expandable Aluminium Backplate</li>
+        </ul>
+
+        <div class="colour">
+          <p class="colour__label">Choose Your Colour: &nbsp;<b>Carbon Fiber</b></p>
+          <div class="swatches">
+            <button class="sw is-on" type="button" style="background:#111" aria-label="Carbon Fiber"></button>
+            <button class="sw" type="button" style="background:#232323" aria-label="Black"></button>
+          </div>
+        </div>
+
+        <button class="opt is-on" type="button">
+          <span class="opt__radio"></span>
+          <span class="opt__body"><span class="opt__name">Carbon Fiber Cardholder</span></span>
+          <span class="opt__price">$88 <s>$125</s></span>
+        </button>
+
+        <button class="opt" type="button">
+          <span class="opt__radio"></span>
+          <span class="opt__body">
+            <span class="opt__name">Trackable Cardholder Bundle <span class="opt__tag">Most Popular</span></span>
+            <span class="opt__inside">What's inside:
+              <ol><li>CarbonFiber Cardholder</li><li>Finder Card - Apple Find My</li><li>Tool Card (Free)</li></ol>
+            </span>
+          </span>
+          <span class="opt__price">$117 <s>$223</s></span>
+        </button>
+
+        <a class="buynow" href="#">
+          <span class="buynow__l">Buy Now - &nbsp;$88 <s>$125</s></span>
+          <svg class="ic"><use href="#i-arrow"/></svg>
+        </a>
+
+        <div class="trust">
+          <span><svg class="ic"><use href="#i-warranty"/></svg>2 Year Warranty</span>
+          <span><svg class="ic"><use href="#i-truck"/></svg>Free Shipping + 100 Day Returns</span>
+        </div>
+
+        <div class="specs">
+          <p class="specs__title">Specifications</p>
+          <dl>
+            <div class="row"><dt>Dimensions</dt><dd>0.29 x 4.1 x 2.3 in (0.75 x 10.5 x 6 cm)</dd></div>
+            <div class="row"><dt>Strap</dt><dd>Expandable back-plate, cash or card storage</dd></div>
+            <div class="row"><dt>Coins</dt><dd>Keep them in your piggy bank ;)</dd></div>
+            <div class="row"><dt>Patented</dt><dd>Patented card mechanism for easy access</dd></div>
+            <div class="row"><dt>Storage</dt><dd>1-6 cards in the cardholder, 6-8 in the backplate</dd></div>
+            <div class="row"><dt>Materials</dt><dd>Space-grade 6061-T6 aluminum</dd></div>
+          </dl>
+          <div class="certs">
+            <span class="ph-cert">Global Recycled Standard</span>
+            <span class="ph-cert">Certified B Corporation</span>
+            <span class="ph-cert">Leather Working Group</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Parliament Wallet ---------- -->
+    <article class="pblock">
+      <div class="pblock__media">
+        <div class="pgal">
+          <span class="badge-round">30% OFF<br>TODAY</span>
+          <div class="ph pgal__main"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — Parliament Wallet</span></div>
+          <div class="pgal__thumbs">
+            <div class="ph ph--tight is-on"><span class="ph__in">1</span></div>
+            <div class="ph ph--tight"><span class="ph__in">2</span></div>
+            <div class="ph ph--tight"><span class="ph__in">3</span></div>
+            <div class="ph ph--tight"><span class="ph__in">4</span></div>
+            <div class="ph ph--tight"><span class="ph__in">5</span></div>
+            <div class="ph ph--tight"><span class="ph__in">6</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pblock__copy">
+        <div class="rating">
+          <span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+          <span>11,798+ Reviews</span>
+        </div>
+        <h3 class="pname">Parliament Wallet</h3>
+        <p class="price"><b>$62</b> <s>$89</s></p>
+
+        <ul class="checks">
+          <li><svg class="ic"><use href="#i-check"/></svg>Holds 1-12 cards and bills</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Made from Premium LWG hides</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Quick card access at the click of a button</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Blocks RFID to prevent Money Theft</li>
+          <li><svg class="ic"><use href="#i-check"/></svg>Expandable Aluminium Backplate</li>
+        </ul>
+
+        <div class="colour">
+          <p class="colour__label">Choose Your Colour: &nbsp;<b>Classic Brown</b></p>
+          <div class="swatches">
+            <button class="sw is-on" type="button" style="background:#6B3A2E" aria-label="Classic Brown"></button>
+            <button class="sw" type="button" style="background:#3F4249" aria-label="Charcoal"></button>
+            <button class="sw" type="button" style="background:#2C3A5C" aria-label="Navy"></button>
+            <button class="sw" type="button" style="background:#C09456" aria-label="Tan"></button>
+            <button class="sw" type="button" style="background:#A3A3A3" aria-label="Grey"></button>
+          </div>
+        </div>
+
+        <button class="opt is-on" type="button">
+          <span class="opt__radio"></span>
+          <span class="opt__body"><span class="opt__name">Parliament Wallet</span></span>
+          <span class="opt__price">$62 <s>$89</s></span>
+        </button>
+
+        <button class="opt" type="button">
+          <span class="opt__radio"></span>
+          <span class="opt__body">
+            <span class="opt__name">Trackable Wallet Bundle <span class="opt__tag">Most Popular</span></span>
+            <span class="opt__inside">What's inside:
+              <ol><li>Parliament Wallet</li><li>Finder Card - Apple Find My</li><li>Tool Card (Free)</li></ol>
+            </span>
+          </span>
+          <span class="opt__price">$91 <s>$187</s></span>
+        </button>
+
+        <a class="buynow" href="#">
+          <span class="buynow__l">Buy Now - &nbsp;$62 <s>$89</s></span>
+          <svg class="ic"><use href="#i-arrow"/></svg>
+        </a>
+
+        <div class="trust">
+          <span><svg class="ic"><use href="#i-warranty"/></svg>2 Year Warranty</span>
+          <span><svg class="ic"><use href="#i-truck"/></svg>Free Shipping + 100 Day Returns</span>
+        </div>
+
+        <div class="specs">
+          <p class="specs__title">Specifications</p>
+          <dl>
+            <div class="row"><dt>Dimensions</dt><dd>0.4 x 4.1 x 2.5 in (1.1 x 10.5 x 6.5 cm)</dd></div>
+            <div class="row"><dt>Strap</dt><dd>Multi-purpose, cash storage</dd></div>
+            <div class="row"><dt>Coins</dt><dd>Keep them in your piggy bank ;)</dd></div>
+            <div class="row"><dt>Patented</dt><dd>Patented card mechanism for easy access</dd></div>
+            <div class="row"><dt>Storage</dt><dd>Stores 1-12 cards, recommended storage: 9 cards</dd></div>
+            <div class="row"><dt>Leather/Materials</dt><dd>Premium LWG hides</dd></div>
+            <div class="row"><dt>Sustainable</dt><dd>Cerfied B Crop, LWG gold-rated tanneries</dd></div>
+          </dl>
+          <div class="certs">
+            <span class="ph-cert">Global Recycled Standard</span>
+            <span class="ph-cert">Certified B Corporation</span>
+            <span class="ph-cert">Leather Working Group</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================ REVIEWS ============================ -->
+<section class="section reviews" id="reviews">
+  <div class="wrap">
+    <h2>Rave Reviews From Our 1,052,000 + Customers</h2>
+
+    <div class="car" data-carousel data-per-view="3">
+      <div class="car__view"><div class="car__track">
+
+        <div class="car__slide">
+          <article class="rcard">
+            <span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+            <h3>My Second Ekster Wallet !</h3>
+            <p>Awesome, just perfect and compact and slim design really helps and now I don't carry a traditional wallet at all anymore. This is actually my second Ekster wallet as I recently purchased the Carbon Fiber version and loved it so much I bought this Aluminum version.</p>
+            <p class="rcard__by"><b>Chris K.</b><span><svg class="ic ic-sm"><use href="#i-shield"/></svg>Verified Customer</span></p>
+          </article>
+        </div>
+
+        <div class="car__slide">
+          <article class="rcard">
+            <span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+            <h3>WHY DID I WAIT SO LONG?</h3>
+            <p>Amazing! The leather feels and looks great. It holds everything I need it to in a slim, compact package. It took a little time to get used to not having a fat billfold in my pocket, but there's no looking back now!</p>
+            <p class="rcard__by"><b>Bobby G.</b><span><svg class="ic ic-sm"><use href="#i-shield"/></svg>Verified Customer</span></p>
+          </article>
+        </div>
+
+        <div class="car__slide">
+          <article class="rcard">
+            <span class="stars" aria-hidden="true"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></span>
+            <h3>THIS CARDHOLDER WORKS</h3>
+            <p>The new Carbon Fiber Cardholder works like magic. It holds a good number of cards, which can be accessed by pushing a knob on the phone. It is slim and fits in my pocket. It protects my credit cards and keeps them separate from my billfold.</p>
+            <p class="rcard__by"><b>READE R.J.</b><span><svg class="ic ic-sm"><use href="#i-shield"/></svg>Verified Customer</span></p>
+          </article>
+        </div>
+
+      </div></div>
+      <div class="car__nav">
+        <button class="car__btn" type="button" data-prev aria-label="Previous"><svg class="ic ic-sm"><use href="#i-left"/></svg></button>
+        <div class="car__dots"></div>
+        <button class="car__btn" type="button" data-next aria-label="Next"><svg class="ic ic-sm"><use href="#i-right"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COMPARISON ============================ -->
+<section class="section compare">
+  <div class="wrap">
+    <h2>How To Use Your Current "Wallet": Throw It Away</h2>
+
+    <div class="ctable">
+      <div class="ccell ccell--feat ccell--head" aria-hidden="true"></div>
+      <div class="ccell ccell--head ccol-us"><span class="ph-logo ph-logo--cmp"><svg class="ic ic-sm"><use href="#i-crest"/></svg>Ekster</span></div>
+      <div class="ccell ccell--head ccell--them-head">Your Bulky<br>Bifold</div>
+
+      <div class="ccell ccell--feat">Prevents Credit Card Theft with RFID Protection</div>
+      <div class="ccell ccol-us"><svg class="ic"><use href="#i-check-o"/></svg></div>
+      <div class="ccell"><svg class="ic"><use href="#i-cross-o"/></svg></div>
+
+      <div class="ccell ccell--feat">Worldwide Precise Location Tracking</div>
+      <div class="ccell ccol-us"><svg class="ic"><use href="#i-check-o"/></svg></div>
+      <div class="ccell"><svg class="ic"><use href="#i-cross-o"/></svg></div>
+
+      <div class="ccell ccell--feat">Quick Card Access</div>
+      <div class="ccell ccol-us"><svg class="ic"><use href="#i-check-o"/></svg></div>
+      <div class="ccell"><svg class="ic"><use href="#i-cross-o"/></svg></div>
+
+      <div class="ccell ccell--feat">Extremely Durable</div>
+      <div class="ccell ccol-us"><svg class="ic"><use href="#i-check-o"/></svg></div>
+      <div class="ccell"><svg class="ic"><use href="#i-cross-o"/></svg></div>
+
+      <div class="ccell ccell--feat ccell--last">Unique Styling Options</div>
+      <div class="ccell ccol-us ccell--last"><svg class="ic"><use href="#i-check-o"/></svg></div>
+      <div class="ccell ccell--last"><svg class="ic"><use href="#i-cross-o"/></svg></div>
+    </div>
+
+    <a class="btn" href="#wallets">Pick my wallet</a>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section faq">
+  <div class="wrap">
+    <h2>Your Questions, Answered</h2>
+    <div class="faq__list">
+
+      <details>
+        <summary>What Does RFID Stand For, And What Does It Do? <svg class="ic chev"><use href="#i-chev"/></svg></summary>
+        <div class="faq__body">RFID stands for Radio Frequency Identification. It's the contactless technology in your bank cards — and the same technology a thief can use to read them from a distance. Every Ekster has RFID blocking built in.</div>
+      </details>
+
+      <details>
+        <summary>How does the cardholder work to keep my cards inside it? <svg class="ic chev"><use href="#i-chev"/></svg></summary>
+        <div class="faq__body">Your cards sit inside an aluminium housing held by a patented mechanism. Press the button at the bottom and they fan out one by one; push them back and they lock in place.</div>
+      </details>
+
+      <details>
+        <summary>What is RFID skimming? How do I protect my cards from it? <svg class="ic chev"><use href="#i-chev"/></svg></summary>
+        <div class="faq__body">Skimming is when someone reads your contactless card wirelessly as they walk past you. The aluminium housing acts as a shield, so your cards can't be read while they're in the wallet.</div>
+      </details>
+
+      <details>
+        <summary>Does the cardholder have a warranty? <svg class="ic chev"><use href="#i-chev"/></svg></summary>
+        <div class="faq__body">Yes — every cardholder comes with a 2 year warranty, on top of the 100 day risk-free trial.</div>
+      </details>
+
+      <details>
+        <summary>If I order now, How soon will i get my wallet? <svg class="ic chev"><use href="#i-chev"/></svg></summary>
+        <div class="faq__body">Orders are shipped within 1 business day, with free shipping on every order.</div>
+      </details>
+
+      <details>
+        <summary>Can I return my wallet if I don't like it? <svg class="ic chev"><use href="#i-chev"/></svg></summary>
+        <div class="faq__body">Try it 100% risk-free for 100 days. If it isn't for you, send it back and get your money back — guaranteed.</div>
+      </details>
+
+      <details>
+        <summary>What is the battery life of the Finder Card? <svg class="ic chev"><use href="#i-chev"/></svg></summary>
+        <div class="faq__body">The rechargeable battery lasts 6 months on a single charge.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA ============================ -->
+<section class="section final">
+  <div class="wrap final__grid">
+    <div class="final__copy">
+      <h2>Get The Wallet You Wished You Always Had</h2>
+      <p class="final__sub">Guaranteed to make your everyday travel seamless.</p>
+      <a class="btn" href="#wallets">Get my Ekster + up to 40% off now</a>
+      <div class="trust">
+        <span><svg class="ic"><use href="#i-warranty"/></svg>12 month Warranty</span>
+        <span><svg class="ic"><use href="#i-truck"/></svg>Free Shipping + 100 Day Returns</span>
+        <span><svg class="ic"><use href="#i-truck"/></svg>Shipped within 1 Business Day</span>
+      </div>
+    </div>
+    <div class="final__media">
+      <div class="ph"><span class="ph__in"><svg class="ic"><use href="#i-image"/></svg>Image — desk flatlay</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <span class="ph-logo ph-logo--light"><svg class="ic ic-sm"><use href="#i-crest"/></svg>Ekster</span>
+  <p>© 2024 EKSTER. Copyright.All Rights Reserved.</p>
+  <p class="site-footer__legal">Use of the Works with Apple badge means that a product has been designed to work specifically with the technology identified in the badge and has been certified by the product manufacturer to meet Apple Find My network product specifications and requirements. Apple is not responsible for the operation of this device or use of this product or its compliance with safety and regulatory standards. Apple, Apple Watch, Find My, iPad, iPadOS, Mac, macOS, and watchOS are trademarks of Apple Inc., registered in the U.S. and other countries. IOS is a trademark or registered trademark of Cisco in the U.S. and other countries and is used under license.</p>
+</footer>
+
+<script>
+(function(){
+  var mq = window.matchMedia('(max-width:880px)');
+
+  /* ---- carousels ---- */
+  document.querySelectorAll('[data-carousel]').forEach(function(car){
+    var track  = car.querySelector('.car__track');
+    var view   = car.querySelector('.car__view');
+    var slides = car.querySelectorAll('.car__slide');
+    var nav    = car.querySelector('.car__nav');
+    var dots   = car.querySelector('.car__dots');
+    var prev   = car.querySelector('[data-prev]');
+    var next   = car.querySelector('[data-next]');
+    var page   = 0;
+
+    function perView(){ return mq.matches ? 1 : parseInt(car.dataset.perView || '3', 10); }
+    function pageCount(){ return Math.max(1, Math.ceil(slides.length / perView())); }
+
+    /* one-up: size the window to the slide on screen so short cards
+       don't leave a hole beneath them */
+    function syncHeight(pv){
+      if (pv !== 1){ view.style.height = ''; return; }
+      var active = slides[page];
+      if (!active) return;
+      var inner = active.firstElementChild || active;
+      view.style.height = inner.getBoundingClientRect().height + 'px';
+    }
+
+    function render(){
+      var pv = perView(), n = pageCount();
+      if (page > n - 1) page = n - 1;
+      if (page < 0) page = 0;
+
+      car.style.setProperty('--slide', (100 / pv) + '%');
+      track.style.transform = 'translateX(' + (-page * 100) + '%)';
+      syncHeight(pv);
+
+      if (n <= 1){ nav.classList.add('is-hidden'); dots.innerHTML = ''; return; }
+      nav.classList.remove('is-hidden');
+
+      if (dots.children.length !== n){
+        dots.innerHTML = '';
+        for (var i = 0; i < n; i++){
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'car__dot';
+          b.dataset.go = i;
+          b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+          dots.appendChild(b);
+        }
+      }
+      for (var j = 0; j < dots.children.length; j++){
+        dots.children[j].classList.toggle('is-on', j === page);
+      }
+      prev.disabled = (page === 0);
+      next.disabled = (page === n - 1);
+    }
+
+    prev.addEventListener('click', function(){ page--; render(); });
+    next.addEventListener('click', function(){ page++; render(); });
+    dots.addEventListener('click', function(e){
+      var t = e.target.closest('[data-go]');
+      if (t){ page = parseInt(t.dataset.go, 10); render(); }
+    });
+
+    var t;
+    window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(render, 120); });
+    render();
+  });
+
+  /* ---- gallery thumbs ---- */
+  document.querySelectorAll('.pgal__thumbs').forEach(function(wrap){
+    wrap.addEventListener('click', function(e){
+      var t = e.target.closest('.ph');
+      if (!t) return;
+      wrap.querySelectorAll('.ph').forEach(function(p){ p.classList.remove('is-on'); });
+      t.classList.add('is-on');
+    });
+  });
+
+  /* ---- colour swatches ---- */
+  document.querySelectorAll('.swatches').forEach(function(wrap){
+    wrap.addEventListener('click', function(e){
+      var b = e.target.closest('.sw');
+      if (!b) return;
+      wrap.querySelectorAll('.sw').forEach(function(s){ s.classList.remove('is-on'); });
+      b.classList.add('is-on');
+      var label = wrap.parentElement.querySelector('.colour__label b');
+      if (label && b.getAttribute('aria-label')) label.textContent = b.getAttribute('aria-label');
+    });
+  });
+
+  /* ---- buy options (scoped per product block) ---- */
+  document.querySelectorAll('.pblock__copy').forEach(function(block){
+    var opts = block.querySelectorAll('.opt');
+    opts.forEach(function(o){
+      o.addEventListener('click', function(){
+        opts.forEach(function(x){ x.classList.remove('is-on'); });
+        o.classList.add('is-on');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
